@@ -1,0 +1,24 @@
+{
+  "name": "decenteralized-identifier-pii",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This project contains encryption and decryption of Personal identity private on blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "qasim raheem khokhar",
+  "license": "ISC",
+  "dependencies": {
+    "@ceramicnetwork/key-did-resolver": "^0.2.2",
+    "@stablelib/ed25519": "^1.0.3",
+    "@stablelib/random": "^1.0.2",
+    "dag-jose": "^3.0.1",
+    "dids": "^3.4.0",
+    "ethers": "^5.7.2",
+    "ipfs-core": "^0.17.0",
+    "jose": "^4.10.3",
+    "key-did-provider-ed25519": "^2.0.1",
+    "key-did-resolver": "^2.3.0"
+  }
+}
