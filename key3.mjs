@@ -1,6 +1,6 @@
 import {generateKeyPairFromSeed, convertSecretKeyToX25519} from "@stablelib/ed25519";
+import * as x25519 from "@stablelib/x25519"
 import * as jose from 'jose'
-
 
 let privateKey = '4bd22700ec3450b5f27e47ba70c233a680c981ab02c1432a859ae23111bef377'
 let seed = new Buffer.from(privateKey, 'hex')
@@ -14,6 +14,20 @@ console.log("kp public base64url", kp_public_base64url)
 console.log("kp secret base64url", new Buffer.from(kp.secretKey.buffer).toString('base64url'))
 let kp_private_base64url = new Buffer.from(kp.secretKey.buffer.slice(0, 32)).toString('base64url')
 console.log("kp private base64url", kp_private_base64url)
+
+let xkp = await x25519.generateKeyPairFromSeed(seed)
+console.log("xkp,", xkp)
+console.log("xkp public hex", new Buffer.from(xkp.publicKey.buffer).toString('hex'))
+console.log("xkp secret hex", new Buffer.from(xkp.secretKey.buffer).toString('hex'))
+console.log("xkp private hex", new Buffer.from(xkp.secretKey.buffer.slice(0, 32)).toString('hex'))
+let xkp_public_base64url = new Buffer.from(xkp.publicKey.buffer).toString('base64url')
+console.log("xkp public base64url", xkp_public_base64url)
+console.log("xkp secret base64url", new Buffer.from(xkp.secretKey.buffer).toString('base64url'))
+let xkp_private_base64url = new Buffer.from(xkp.secretKey.buffer.slice(0, 32)).toString('base64url')
+console.log("xkp private base64url", xkp_private_base64url)
+
+
+
 
 const PrivateKey = await jose.importJWK(
     {
@@ -36,18 +50,15 @@ let EdDSAkey = {
     publicKey: PublicKey,
     privateKey: PrivateKey
 }
-console.log('secret key:', kp.secretKey)
-let x25519 = await convertSecretKeyToX25519(kp.secretKey);
-let x25519_base64url = new Buffer.from(x25519).toString('base64url')
-console.log("x25519:", x25519, x25519_base64url)
 
-let x25519alg = 'ECDH-ES+A256KW'
+
+let x25519alg = 'ECDH-ES'
 const XPrivateKey = await jose.importJWK(
     {
         crv: 'X25519',
         kty: 'OKP',
-        x: x25519_base64url,
-        d: kp_private_base64url
+        x: xkp_public_base64url,
+        d: xkp_private_base64url
 
     },
     x25519alg
@@ -56,7 +67,7 @@ const XPublicKey = await jose.importJWK(
     {
         crv: 'X25519',
         kty: 'OKP',
-        x: x25519_base64url,
+        x: xkp_public_base64url,
     },
     x25519alg
 )
@@ -64,8 +75,6 @@ let ECDHkey = {
     privateKey:XPrivateKey,
     publicKey:XPublicKey
 };
-
-
 
 
 const text = '{"name": "qasim","email":"qasimmehmood13936@gmail.com"}'

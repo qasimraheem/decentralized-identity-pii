@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@ceramicnetwork/key-did-resolver": "^0.2.2",
+    "@detox/crypto": "^0.7.1",
     "@stablelib/ed25519": "^1.0.3",
     "@stablelib/random": "^1.0.2",
     "dag-jose": "^3.0.1",
