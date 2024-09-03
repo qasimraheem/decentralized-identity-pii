@@ -12,7 +12,7 @@
     "@ethersproject/random": "^5.7.0",
     "@ethersproject/strings": "^5.7.0",
     "@ethersproject/transactions": "^5.7.0",
-    "aes-js": "3.0.0",
+    "aes-js": "3.1.2",
     "scrypt-js": "3.0.1"
   },
   "description": "Wallet management utilities for KeyStore and Crowdsale JSON wallets.",
