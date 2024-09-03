@@ -22,6 +22,6 @@
     "jose": "^4.15.5",
     "key-did-provider-ed25519": "^2.0.1",
     "key-did-resolver": "^2.3.0",
-    "multiformats": "^10.0.2"
+    "multiformats": "^10.0.3"
   }
 }
