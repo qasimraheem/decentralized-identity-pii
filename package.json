@@ -16,11 +16,11 @@
     "@stablelib/random": "^1.0.2",
     "@stablelib/x25519": "^1.0.3",
     "dag-jose": "^3.0.1",
-    "dids": "^3.4.0",
-    "ethers": "^5.7.2",
+    "dids": "^4.0.4",
+    "ethers": "^6.0.0",
     "ipfs-core": "^0.17.0",
     "jose": "^4.15.5",
-    "key-did-provider-ed25519": "^2.0.1",
+    "key-did-provider-ed25519": "^3.0.1",
     "key-did-resolver": "^2.3.0",
     "multiformats": "^10.0.2"
   }
